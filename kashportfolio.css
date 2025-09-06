@@ -1,0 +1,118 @@
+/* Remove background stuff from body */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Gradient background wrapper */
+.background {
+  position: fixed; /* stays put, no scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(-45deg, #f58585, rgb(0, 110, 255), #e427a8);
+  background-size: 400% 400%;
+  animation: gradientAnimation 8s ease infinite;
+  overflow: hidden;
+  z-index: 0;
+}
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Dark overlay on top of blobs */
+.background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 2; /* sits over blobs but under content */
+  pointer-events: none;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 150%;
+  filter: blur(120px);
+  opacity: 0.9;
+  mix-blend-mode: screen;
+  animation: move 15s infinite alternate ease-in-out;
+  z-index: 1; /* under overlay */
+}
+
+/* 🌈 Warm spectrum blobs with varied sizes */
+.purple {
+  background: rgb(132, 23, 200);
+  width: 900px;
+  height: 500px;
+  animation-duration: 45s;
+}
+.pink {
+  background: radial-gradient(rgb(245, 112, 255), white); /*rgb(238, 0, 255);*/
+  width: 50px;
+  height: 50px;
+  animation-duration: 40s;
+}
+.orange {
+  background: rgb(234, 206, 146);
+  width: 500px;
+  height: 300px;
+  animation-duration: 50s;
+}
+.red {
+  background: radial-gradient(
+    rgb(237, 98, 144),
+    #dd843b
+  ); /*rgb(202, 64, 110);*/
+  width: 400px;
+  height: 620px;
+  animation-duration: 42s;
+}
+.blue {
+  background: rgb(0, 195, 255);
+  width: 750px;
+  height: 700px;
+  animation-duration: 55s;
+}
+
+/* More dramatic drifting (like rays stretching out) */
+@keyframes move {
+  0% {
+    transform: translate(-40%, -40%);
+  }
+  25% {
+    transform: translate(50%, -30%);
+  }
+  50% {
+    transform: translate(-30%, 50%);
+  }
+  75% {
+    transform: translate(40%, 40%);
+  }
+  100% {
+    transform: translate(-40%, -40%);
+  }
+}
+
+/*h1 {
+  color: white;
+  z-index: 10;
+  position: relative;
+  font-family: sans-serif;
+  font-size: 2rem;
+  text-align: center;
+}*/
