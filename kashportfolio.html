@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="kashportfolio.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -18,39 +19,228 @@
     <style>
   
       body {
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        
         font-family: sans-serif;
-        color: black;
+        color: white;
       }
 
-      i {
-        font-size: 5rem;
-        margin: 2;
+      .navigation-bar{
+        top: 0;
+        width: 100%;
+        backdrop-filter: blur(8px);
+        z-index: 5; /* above background + overlay */
+      }
+
+      .nav{
+        align-items: center;
+      }
+      .nav-link {
+        color: #3f0046 !important;
+        font-size: 0.7rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        align-items: center;
+        margin-left:-1rem;
+      }
+
+      .nav-link:hover {
+        color: #dc027d !important; /* hot pink hover */
+      }
+
+      .nav-link i{
+        font-size: 1rem;
+        transition: color 0.3s ease;
+        align-items: center;
+      }
+
+     
+      .main-content {
+        position: relative;
+        z-index: 5;              /* above background + overlay */
+        display: flex;
+        flex-direction: column;  /* stack sections */
+        gap: 3rem;               /* spacing between sections */
+        color: #3f0046;             /* white text for contrast */
+      }
+
+      /* Section headings */
+      .main-content h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        text-align: left;
+      }
+      .main-content h2 {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+        font-weight: 600;
+        text-align: left;
+      }
+
+      .main-content h3 {
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+        font-weight: 600;
+        text-align: left;
+      }
+
+      /* Paragraphs */
+      .main-content p {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #000000;          /* softer white */
+        margin: 0;
+      }
+
+      .slides{
+        height: 25vh;
+      }
+
+      .white-board{
+        background-color: #ffffff;
+        padding: 2rem;
+      }
+
+      .pink-board{
+        background-color: #fca3d58f;
+        backdrop-filter: blur(10rem);
+        border-radius: 1rem;
+        /*box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);*/
+      }
+
+      .blue-board{
+        background-color: #00c3ff32;
+        backdrop-filter: blur(10rem);
+        border-radius: 1rem;
+        /*box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);*/
+      }
+      .divider {
+    border-top: 3px solid #000000;
+      }
+      /* Frosted glass effect for cards (like projects/skills) */
+      .project-card, 
+      .skill-card {
+        background:#ff9d0092; 
+        backdrop-filter: blur(10px);
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .project-card:hover, 
+      .skill-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.4);
+      }
+      
+      .btn-custom {
+        background-color: #dc027d;
+        color: white;
+        font-size: 1rem;
+       /* font-weight: bold;*/
+        border: none;
+        margin: 0.3rem 0;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .btn-custom:hover {
+        background-color: rgb(255, 159, 213);
+        color: #3f0046;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      /* Icons (skills) */
+      .icons-custom {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .icons-custom i {
+        font-size: 5rem!important;
+        margin: 1rem!important;
+        transition: transform 0.3s ease!important;
+      }
+
+      .icons-custom i:hover {
+        transform: scale(1.2);
+      }
+
+      .footer-bar{
+        bottom: 0;
+        width: 100%;
+        backdrop-filter: blur(8px);
+        z-index: 5; /* above background + overlay */
+      }
+
+      .footer-bar .nav-link{
+        color: #3f0046 !important;
+        font-size: 1.5rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .footer-bar .nav-link i{
+        color: #3f0046 !important;
+        font-size: 1.5rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
       }
     </style>
   </head>
   <body>
-    <background>
+    <background >
+      <div class="background">
     <div class="blob purple"></div>
     <div class="blob pink"></div>
     <div class="blob orange"></div>
     <div class="blob red"></div>
     <div class="blob blue"></div>
+    </div>
   </background>
 
+  <div class="navigation-bar pt-2 pe-3">
+    <ul class="nav d-flex justify-content-end align-items-end flex-wrap text-end">
+  <li class="nav-item">
+    <a class="nav-link" href="#">Resume </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Projects</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Contact</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://linkedin.com/in/yourprofile" target="_blank">
+  <i class="bi bi-linkedin"></i>
+</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="https://github.com/yourprofile" target="_blank">
+  <i class="bi bi-github"></i>
+</a>
+  </li>
+</ul>
+</div>
+
+    <div class="main-content">
     <home>
-    <div class="container my-5">
-      <h1>Welcome to My Portfolio</h1>
+      <div class="my-5">
+    <div class="container">
+      <div class="m-2 p-4 mb-5">
+      <h1>Kashish Shroff</h1>
       <p>
-        This is a brief introduction about myself and my work. Explore the
-        sections below to learn more about my skills, experience, and projects.
+        Portfolio. Software Developer.
       </p>
+      </div>
+    </div>
     </div>
       </home>
 
+    <div class="white-board rounded-4">
+      <div class="container-lg g-5 ">
     <about>
-    <div class="container my-5">
-      <h1>Hello im kashish</h1>
+    <div class="pink-board rounded-4 mx-5 p-5 my-5 ">
+      <h3>Hello,</h3>
       <p>
         I am a software developer, tech entusiast, designer, artist and a die
         hard horror buff. I love to create stuff and learn new things.I enjoy
@@ -65,70 +255,144 @@
     </about>
 
     <skills>
-    <div div class="container my-5">
-      <h1>Skills</h2>
-      <p>
-        MySQL, PostgreSQL, Bootstrap, Android , AWS, Django, JavaScript, Python, CSS, HTML, PHP
-      </p>
+    <div class="m-2 p-4 my-5">
+      <h2>Skills</h2>
+      <div class="mx-3 justify-content-center gx-3">
+      <button class="btn btn-custom">Python</button>
+      <button class="btn btn-custom">CSS</button>
+      <button class="btn btn-custom">HTML</button>
+      <button class="btn btn-custom">PHP</button>
+      <button class="btn btn-custom">MySQL</button>
+      <button class="btn btn-custom">PostgreSQL</button>
+      <button class="btn btn-custom">Bootstrap</button>
+      <button class="btn btn-custom">Django</button>
+      <button class="btn btn-custom">Android</button>
+      <button class="btn btn-custom">AWS</button>
+      <button class="btn btn-custom">Javascript</button>
+      </div>
+
+      <div class="icons-custom my-3">
       <!-- Databases -->
-<i class="devicon-mysql-plain colored"></i>
-<i class="devicon-postgresql-plain colored"></i>
+<i class="devicon-mysql-plain"></i>
+<i class="devicon-postgresql-plain"></i>
 
 <!-- Framework / Library -->
-<i class="devicon-bootstrap-plain colored"></i>
-<i class="devicon-django-plain colored"></i>
+<i class="devicon-bootstrap-plain"></i>
+<i class="devicon-django-plain"></i>
 
 <!-- Platforms -->
-<i class="devicon-android-plain colored"></i>
-<i class="devicon-amazonwebservices-plain colored"></i>
+<i class="devicon-android-plain"></i>
+<i class="devicon-amazonwebservices-plain"></i>
 
 <!-- Languages -->
-<i class="devicon-javascript-plain colored"></i>
-<i class="devicon-python-plain colored"></i>
-<i class="devicon-php-plain colored"></i>
-<i class="devicon-css3-plain colored"></i>
-<i class="devicon-html5-plain colored"></i>
+<i class="devicon-javascript-plain"></i>
+<i class="devicon-python-plain"></i>
+<i class="devicon-php-plain"></i>
+<i class="devicon-css3-plain"></i>
+<i class="devicon-html5-plain"></i>
+</div>
     </div>
     </skills>
 
     <experience>
-    <div class="container my-5">
-      <h1>Experience</h1>
-      <p>
-        I am a software developer, tech entusiast, designer, artist and a die
-        hard horror buff. I love to create stuff and learn new things.I enjoy
-        coding because it allows me to bring my ideas to life and solve complex
-        problems. When I'm not coding, you can find me exploring new
-        technologies, reading tech blogs, or experimenting with design tools.
-        I'm always eager to connect with like-minded individuals, so feel free
-        to reach out if you share similar interests or have exciting projects to
-        discuss!
-      </p>
+    <div class="m-2 p-4 my-5">
+      <h2>Experience</h2>
+      <div class="my-4 blue-board p-3 pt-4 px-4 ">
+        <h3>Software Developer Intern | Marva AI LLP</h3>
+        <p class="mb-1"><em><b>Jan 2025 - Jul 2025</b></em></p>
+        <ul>
+          <li>Developed and maintained web applications using Django and React.</li>
+          <li>Collaborated with cross-functional teams to design and implement new features.</li>
+          <li>Optimized database queries, improving application performance by 20%.</li>
+        </ul>
+        <hr class="divider">  
+        <div class="mx-3 justify-content-center gx-3">
+      <button class="btn btn-custom">python</button>
+      <button class="btn btn-custom">github</button>
+      </div>
+      </div>
     </div>
 </experience>
 
     <projects>
-    <div class="container my-5">
-        <h1>Projects</h1>
+    <div class="m-2 p-4 my-5">
+        <h2>Projects</h2>
       <div class="row g-3">
         <div class="col-md-6">
-          <div class="p-3 border rounded">Project 1</div>
+          <div class="p-3 border rounded project-card">
+            <h3>WeatherVane</h3>
+            <p>
+              A web application that provides real-time weather updates and forecasts for any location worldwide.
+            <hr class="divider">
+            <div class="mx-3 justify-content-center gx-3">
+              <button class="btn btn-custom">HTML</button>
+              <button class="btn btn-custom">CSS</button>
+              <button class="btn btn-custom">JavaScript</button>
+              <button class="btn btn-custom">Bootstrap</button>
+              <button class="btn btn-custom">Django</button>
+              <button class="btn btn-custom">OpenWeatherAPI</button>
+              <button class="btn btn-custom">Responsive Design</button> 
+            </div>      
+          </div>
         </div>
         <div class="col-md-6">
-          <div class="p-3 border rounded">Project 2</div>
+          <div class="p-3 border rounded project-card">
+            <h3>TaskMaster Pro</h3>
+            <p>
+              A task management application that helps users organize, prioritize, and track their daily tasks efficiently.
+            <hr class="divider">
+            <div class="mx-3 justify-content-center gx-3">
+              <button class="btn btn-custom">Python</button>
+              <button class="btn btn-custom">Django</button>
+              <button class="btn btn-custom">HTML</button>
+              <button class="btn btn-custom">CSS</button>
+              <button class="btn btn-custom">JavaScript</button>
+              <button class="btn btn-custom">SQLite</button>
+              <button class="btn btn-custom">User Authentication</button> 
+            </div>
+          </div>
         </div>
       </div>
     </div>
     </projects>
+    </div>
+    </div>
 
-    <contact>   
-    <div class="container my-5">
+    <contact> 
+      <div class="container">
+    <div class="m-2 p-4 my-5">
       <h1>Contact Me</h1>
       <p>
-        contact me on email,github,linkedin,instagram
-      </p>  
+        Feel free to reach out to me via email at <a href="mailto:kashishshroff2003@gmail.com" style="color: #dc027d;">email</a> or connect with me on <a href="https://www.linkedin.com/in/kashish-shroff-5b4b6b261/" target="_blank" style="color: #dc027d;">LinkedIn</a>.
+      </p>
+
     </div>
     </contact>
+    </div>
+    </div>  
+    <div class="footer-bar pb-5 d-flex justify-content-center align-items-center flex-wrap">
+    <ul class="nav pb-5 d-flex justify-content-center align-items-end flex-wrap text-center">
+  <li class="nav-item">
+    <a class="nav-link footer-bar" href="#">Resume </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link footer-bar" href="#">Projects</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link footer-bar" href="#">Contact</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link footer-bar" href="https://linkedin.com/in/yourprofile" target="_blank">
+  <i class="bi bi-linkedin"></i>
+</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link footer-bar" href="https://github.com/yourprofile" target="_blank">
+  <i class="bi bi-github"></i>
+</a>
+  </li>
+</ul>
+</div>
 
   </body>
 </html>
